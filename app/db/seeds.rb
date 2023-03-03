@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+cities = %w[Daugavpils Jelgava Jurmala Liepaja Rezekne Riga Ventspils Sigulda Cesis Kuldiga]
+cities.each { |name| City.create!(name: name, coat_of_arms_url: "https://example.com/#{name}.png") }

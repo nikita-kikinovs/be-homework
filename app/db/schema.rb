@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_15_062321) do
-  create_table "hotels", force: :cascade do |t|
-    t.string "city"
-    t.text "display_name"
+ActiveRecord::Schema[7.0].define(version: 2022_08_15_062322) do
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "coat_of_arms_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "hotels", force: :cascade do |t|
+    t.text "display_name"
+    t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_hotels_on_city_id"
+  end
+
+  add_foreign_key "hotels", "cities"
 end
